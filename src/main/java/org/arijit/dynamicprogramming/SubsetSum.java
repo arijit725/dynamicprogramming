@@ -23,12 +23,30 @@ public class SubsetSum {
 //				printArray(dp);
 			}
 		}
+		trackNumber(dp, arr);
 		return dp[dp.length-1][dp[0].length-1];
 	}
 	
 	public static void printArray(boolean dp[][]) {
 		for(int i=0;i<dp.length;i++)
 			System.out.println(Arrays.toString(dp[i]));
+	}
+	
+	private static void trackNumber(boolean[][] dp,int input[]) {
+		int i=dp.length-1;
+		int j=dp[0].length-1;
+		if(!dp[i][j])
+			return; //no subset sum found
+		while(i>=0 && j>=0) {
+		while(i>=0 && dp[i][j]) {
+			i--;			
+		}
+		if(i>=0)
+		{
+			System.out.println(input[i]);
+			j= j-input[i];
+		}
+		}
 	}
 
 }
